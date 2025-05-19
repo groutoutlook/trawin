@@ -5,12 +5,12 @@ transparencyEnabled := false
 currentTransparency := 255 ; Default full opacity
 titleChangeDuration := 1000 ; Duration in milliseconds (1 second) for which the tooltip is displayed
 
-; Toggle transparency with CTRL + ALT + RMB (Right Mouse Button)
+; Toggle transparency with CTRL+WIN+ALT+RightClick
 ^#!RButton::
 
 if (!transparencyEnabled) {
     transparencyEnabled := true ; Enable transparency
-    currentTransparency := 220 ; Initial transparency level
+    currentTransparency := 200 ; Initial transparency level
     UpdateTransparency("A") ; Apply transparency and show tooltip
 } else {
     ; Disable transparency
@@ -21,7 +21,7 @@ if (!transparencyEnabled) {
 }
 return
 
-; Decrease transparency with CTRL + ALT + SCROLL DOWN
+; Decrease transparency with CTRL+WIN+ALT+-
 ^#!-::
 if (transparencyEnabled) {
     currentTransparency -= 10
@@ -31,7 +31,7 @@ if (transparencyEnabled) {
 }
 return
 
-; Increase transparency with CTRL + ALT + SCROLL UP
+; Increase transparency with CTRL+WIN+ALT+=
 ^#!=::
 if (transparencyEnabled) {
     currentTransparency += 10
