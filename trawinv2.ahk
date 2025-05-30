@@ -25,7 +25,7 @@ currentProcess := ""
 
 ; Example hotkey to set the current process (Ctrl+Win+RightClick)
 ^#!RButton:: {
-    global currentProcess,transparencyEnabled
+    global currentProcess,transparencyEnabled,currentTransparency,titleChangeDuration
     currentProcess := WinGetProcessName("A")  ; Get the process name of the active window
     ToolTip "Process set to: " currentProcess
 
@@ -39,12 +39,13 @@ currentProcess := ""
         ApplyTransparencyToProcess(currentProcess, "OFF") ; Turn off transparency
         transparencyEnabled := false               ; Reset flag
         currentTransparency := 255                 ; Reset to fully opaque
-        ToolTip                                     ; Remove any tooltip
+        SetTimer(() => ToolTip(), -titleChangeDuration)
     }
 
 }
 
 UpdateTransparency(processName) {
+    global transparencyEnabled,currentTransparency
     ApplyTransparencyToProcess(processName, currentTransparency)
     
     if (transparencyEnabled) {
@@ -55,6 +56,7 @@ UpdateTransparency(processName) {
 }
 
 ApplyTransparencyToProcess(processName, transparencyValue) {
+    ; global currentProcess,transparencyEnabled,currentTransparency
     winList := WinGetList("ahk_exe " . processName)
     
     for hwnd in winList {

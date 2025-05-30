@@ -1,7 +1,6 @@
 # Window Transparency Toggle Script
 
 - This is the code I stole. Dont mind if I do.
-![Transparency Toggle](./screenshot.PNG)
 
 ## Features
 - **Toggle Window Transparency**: Easily activate or deactivate the transparency effect on any window.
