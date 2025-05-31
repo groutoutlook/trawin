@@ -56,10 +56,14 @@ IsClickThrough(hwnd := "") {
     hwnd := WinExist("A")
     if hwnd {
         try {
+            ; Send "^+{F3}"
+            ; ToolTip "Click-through toggled"
             toggled := ToggleClickThrough(hwnd)
             if toggled
+                Send "^+{F3}"
                 ToolTip "Click-through enabled"
             else
+                Send "^+{F3}"               
                 ToolTip "Click-through disabled"
             SetTimer(() => ToolTip(), -1000)  ; Hide tooltip after 1 second
         } catch {
